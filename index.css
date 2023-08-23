@@ -165,24 +165,25 @@ button.input-increase-button {
     cursor: pointer;
 }
 
-div.instruction-section{
+div.instruction-section {
     display: flex;
     flex: 1;
     border-top: 2px solid white;
     width: 100%;
-    padding-left: 7%;
     text-align: left;
     justify-content: flex-start;
     align-items: center;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    line-height: 40px;
 }
 
-p.instructions {
+p.instructions-text {
+    padding-left: 20px;
+    color: white;
+    line-height: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-block-end: 0.3em;
     margin-block-start: 0em;
-    margin-block-end: 0em;
+    text-shadow: 0px 0px 15px black;
 }
 
 div.warning-popup {
