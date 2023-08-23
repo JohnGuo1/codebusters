@@ -105,7 +105,7 @@ div.solutions-button-container {
     width: fit-content;
 }
 
-button.solutions-button {
+#solutions-button {
     display: block;
     height: 40px;
     width: 150px;
@@ -122,11 +122,11 @@ button.solutions-button {
     margin-top: 20px;
 }
 
-button.solutions-button:hover {
+#solutions-button:hover {
     background-color: rgb(255, 255, 255, .85);
 }
 
-button.solutions-button:active {
+#solutions-button:active {
     background-color: rgb(255, 255, 255, .75);
 }
 
@@ -279,6 +279,11 @@ table.cipher-table {
     body {
         -webkit-print-color-adjust: exact;
     }
+
+    div.main-page {
+        background-color: white;
+    }
+
     div.left-screen-space {
         display: none;
     }
@@ -292,6 +297,10 @@ table.cipher-table {
     }
 
     div.top-buttons {
+        display: none;
+    }
+
+    button.solutions-button {
         display: none;
     }
 
