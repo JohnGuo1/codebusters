@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>Codebusters Generator | Printable</title>
+    <title>Codebusters Generator | Aristocrats</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,14 @@
         <div class="left-screen-space" id="left-screen-space">
         </div>
         <div class="main-page" id="main-page">
+          <div class="top-buttons">
           <div class="print-button-container">
             <button class="print-button" id="print-button">PRINT</button>
+          </div>
+          <div class="solutions-button-container">
+            <button class="solutions-button" id="solutions-button">SOLUTIONS</button>
+            <button class="solutions-button" id="hide-solutions-button">HIDE SOLUTIONS</button>
+          </div>
           </div>
           <ol class="cipher-list" id="cipher-list"></ol>
         </div>
@@ -59,15 +65,86 @@
         console.log(encryptLetters.length);
 
 
-          var printableArray = [];
-          var upperPrintableArray = [];
-          console.log(letters);
-          const printButton = document.getElementById("print-button");
-          printButton.addEventListener("click", function() {
-            print();
-          })
+        var printableArray = [];
+        var upperPrintableArray = [];
+        var originalArray = [];
+        console.log(letters);
+        const printButton = document.getElementById("print-button");
+        printButton.addEventListener("click", function() {
+          print();
+        })
 
+        function showSolutions() {
+          for (var i = 0; i < 1; i++) {
+            console.log(document.getElementById(`solution-container${i}`));
+            document.getElementById("`solution-container${i}`").style.display === "block";
+          }
+        }
 
+        var solutionsButton = document.getElementsByClassName("solutions-button");
+        var s;
+        for (s = 0; s < solutionsButton.length; s++) {
+          solutionsButton[s].addEventListener("click", function() {
+            this.classList.toggle("active");
+            let cipherSolutions0 = document.getElementById("solution-container0");
+            if (cipherSolutions0.style.display === "block") {
+              cipherSolutions0.style.display = "none";
+            } else {
+              cipherSolutions0.style.display = "block";
+            }
+            let solutionsDiv = document.getElementById("solution-container0");
+            console.log(typeof document.getElementById("solution-container1"));
+            if (solutionsDiv.style.display === "block") {
+              console.log(solutionsDiv.style.display);
+              document.getElementById("hide-solutions-button").style.display = "block";
+              document.getElementById("solutions-button").style.display = "none";
+            }
+            else if (solutionsDiv.style.display === "none") {
+              document.getElementById("solutions-button").style.display ="block";
+              document.getElementById("hide-solutions-button").style.display = "none";
+            }
+            if (document.getElementById("solution-container1") === "null") {
+            }
+            else if (typeof document.getElementById("solution-container1") === "object") {
+              let cipherSolutions1 = document.getElementById("solution-container1");
+              if (cipherSolutions1.style.display === "block") {
+                cipherSolutions1.style.display = "none";
+            } else {
+              cipherSolutions1.style.display = "block";
+            }
+            }
+            if (document.getElementById("solution-container2") === "null") {
+            }
+            else if (typeof document.getElementById("solution-container2") === "object"){
+              let cipherSolutions2 = document.getElementById("solution-container2");
+              if (cipherSolutions2.style.display === "block") {
+                cipherSolutions2.style.display = "none";
+            } else {
+              cipherSolutions2.style.display = "block";
+            }
+            }
+            if (document.getElementById("solution-container3") === "null") {
+            }
+            else if (typeof document.getElementById("solution-container3") === "object") {
+              let cipherSolutions3 = document.getElementById("solution-container3");
+              if (cipherSolutions3.style.display === "block") {
+                cipherSolutions3.style.display = "none";
+            } else {
+              cipherSolutions3.style.display = "block";
+            }
+            }
+            if (document.getElementById("solution-container4") === "null") {
+            }
+            else if (typeof document.getElementById("solution-container4") === "object") {
+              let cipherSolutions4 = document.getElementById("solution-container4");
+              if (cipherSolutions4.style.display === "block") {
+                cipherSolutions4.style.display = "none";
+            } else {
+              cipherSolutions4.style.display = "block";
+            }
+            }
+          });
+        }
 
         function tableCreate() {
           var body = document.getElementById("cipher-list");
@@ -123,14 +200,24 @@
           body.appendChild(tbl);
         }
 
+        function solutionCreate(index) {
+          var body = document.getElementById("cipher-list");
+          var div = document.createElement('div');
+          div.style.width = '90%';
+          div.innerText = `Number ${index + 1} solution: ${originalArray[index]}`
+          div.setAttribute('id', `solution-container${index}`);
+          body.appendChild(div);
+        }
 
         function generateList () {
           let list = document.getElementById("cipher-list");
+          console.log(printableArray);
           for (i = 0; i < printableArray.length; ++i) {
             let li = document.createElement('li');
             li.innerText = printableArray[i];
             list.appendChild(li);
             tableCreate();
+            solutionCreate(i);
           }
           let mainHeight = document.getElementById('main-page').style.height;
           document.getElementById('left-screen-space').style.height = mainHeight;
@@ -157,6 +244,7 @@
               return "finished";
             }
             printableArray.push(randomElement);
+            originalArray.push(randomElement);
             i++;
             if(i < localStorage.getItem("input")) {
               logFileText("quotes.txt");
@@ -166,6 +254,7 @@
             console.log(printableArray.length);
 
             let upperPrintableArray = Array.apply(null, printableArray).map(item => item.toUpperCase());
+            console.log(originalArray);
             console.log(printableArray);
             console.log(upperPrintableArray);
             for (var y = 0; y < localStorage.getItem("input"); y++) {
@@ -203,31 +292,11 @@
             generateList();
             console.log(printableArray);
 
-            // generateList();
         }
         logFileText("quotes.txt");
 
       }
       console.log(printableArray);
-      // function encrypt() {
-      //       let upperPrintableArray = printableArray.map(item => item.toUpperCase());
-      //       console.log(printableArray);
-      //       console.log(upperPrintableArray);
-      //       for (var y = 0; y < localStorage.getItem("input"); y++) {
-      //         for (var z = 0; z < 26; z++) {
-      //           if (upperPrintableArray[y].includes(letters[z])) {
-      //             var randomLetter = encryptLetters[Math.floor(Math.random() * (encryptLetters.length - 1 - z))];
-      //             if (randomLetter === letters[z]) {
-      //               randomLetter = encryptLetters[(encryptLetters.length - 1 - z)];
-      //             }
-      //             upperPrintableArray[y] = upperPrintableArray[y].replaceAll(letters[z], randomLetter.toLowerCase());
-      //           }
-      //         }
-      //         printableArray[y]
-      //       }
-      //     }
-
-      //     encrypt();
       </script>
   </body>
 </html>
