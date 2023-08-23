@@ -1,0 +1,260 @@
+html { width:100%; height:100%; margin:0px; }
+body { width:100%; height:100%; margin:0px; }
+
+html {
+    background-color: rgb(68, 68, 68);
+}
+
+div.footer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(35, 35, 35);
+    height: 75px;
+    border-top: 3px solid rgb(106, 106, 106);
+}
+
+p.footer-made-by {
+    color: white;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+div.body-container {
+    display: flex;
+}
+
+div.main-page-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+}
+
+div.left-screen-space {
+    background-image: url("images_folder/background.jpg");
+    background-repeat: repeat;
+    background-position-x: center;
+    background-color: white;
+    display: flex;
+    width: 15%;
+    border-right: 2px solid black;
+}
+
+div.main-page {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.right-screen-space {
+    background-image: url("images_folder/background.jpg");
+    background-repeat: repeat;
+    background-position-x: center;
+    background-color: white;
+    display: flex;
+    width: 15%;
+    border-left: 2px solid black;
+}
+
+div.summary-section {
+    display: block;
+    height: fit-content;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px solid white;
+    margin-bottom: 15px;
+}
+
+p.summary {
+    font-size: 25px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+div.instruction-section{
+    display: block;
+    height: fit-content;
+}
+
+div.generate-button-container {
+    display: block;
+    height: fit-content;
+}
+
+button.generate-button {
+    height: 150px;
+    width: 250px;
+    background-color: rgb(14, 229, 79);
+    border: 2px solid black;
+    box-shadow: 0px 0px 20px black;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    border-radius: 20px;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 100ms;
+    margin-bottom: 35px;
+    margin-top: 50px;
+}
+
+button.generate-button:hover {
+    background-color: rgb(14, 229, 79, .85);
+}
+
+button.generate-button:active {
+    background-color: rgb(14, 229, 79, .75);
+}
+
+p.input-guide {
+    color: white;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-block-end: 0.3em;
+    margin-block-start: 0em;
+    text-shadow: 0px 0px 15px black;
+}
+
+div.cipher-amount-selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+div.input-decrease-button-container {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+
+button.input-decrease-button {
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+div.input-increase-button-container {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    user-select: none;
+}
+
+button.input-increase-button {
+    height: 100%;
+    width: 100%;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+div.warning-popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+div.warning-popup .popup-text {
+    visibility: hidden;
+    width: 160px;
+    background-color: rgb(83, 83, 83, .85);
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    margin-bottom: 24px;
+}
+
+div.warning-popup .popup-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+div.warning-popup .show {
+    visibility: visible;
+}
+
+input.cipher-amount-selector {
+    height: 40px;
+    max-width: 35px;
+    text-align: center;
+    width: fit-content;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    background-color: rgb(255, 255, 255);
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+@media screen and (max-width: 1065px) {
+
+}
+
+@media screen and (max-width: 1000px) {
+
+}
+
+@media screen and (max-width: 900px) {
+
+}
+
+@media screen and (max-width: 800px) {
+
+}
+
+@media screen and (max-width: 750px) {
+
+}
+
+@media screen and (max-width: 560px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
+
+@media screen and (max-width: 420px) {
+
+}
+

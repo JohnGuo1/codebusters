@@ -7,64 +7,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Science Olympiad, Codebusters, Aristocrat Cipher">
     <meta name="description" content="Generates Aristocrat ciphers for the Science Olympiad event, Codebusters.">
-    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" href="images_folder/hoggard logo.png">
   </head>
   <body>
     <div class="Upper-navbar" id="upper-navbar-main">
       <div class="Upper-navbar-logo-container">
       <div class="Upper-navbar-logo">
-        <a class="Multi-Ethnic" href="./">
-        Multi-Ethnic Club
+        <a class="Codebusters-Generator" href="./">
+        Codebusters Generator
         </a>
         <img class="hoggard-logo-upper-navbar" src="images_folder/hoggard logo.png">
       </div>
       </div>
-      <div class="Upper-navbar-buttons">
-        <a class="images" href="./Images">
-        Images
-        </a>
-        <a class="contact" href="./Contact">
-        Contact
-        </a>
-        <a class="register" href="./Register">
-        Register
-        </a>
-        <a class="about" href="./About">
-        About
-        </a>
-        <a class="schedule" href="./Schedule">
-        Schedule
-        </a>
+      </div>
+    <div class="body-container">
+      <div class="main-page-container">
+        <div class="left-screen-space" id="left-screen-space"></div>
+        <div class="main-page" id="main-page">
+          <div class="summary-section">
+            <p class="summary">
+              Use this tool to generate standard Aristocrat ciphers for the the Science Olympiad event,
+              Codebusters. The printable format of the ciphers is a replica of the actual test.
+            </p>
+          </div>
+          <div class="generate-button-container">
+            <button class="generate-button" onclick="generate()">GENERATE</button>
+          </div>
+          <p class="input-guide">Number of ciphers to generate</p>
+          <div class="cipher-amount-selector-container">
+            <div class="input-decrease-button-container">
+              <button class="input-decrease-button" onclick="decrement()">-</button>
+            </div>
+            <div class="instruction-section"></div>
+            <div class="warning-popup">
+              <span class="popup-text" id="myPopup">Only numbers 1 - 5 are allowed!</span>
+            </div>
+            <input class="cipher-amount-selector" id="cipher-amount-selector" type="number" 
+            onkeyup="checkValue()">
+            <div class="input-increase-button-container">
+              <button class="input-increase-button" onclick="increment()">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-screen-space" id="right-screen-space"></div>
+      </div>
       </div>
 
-      <div class="navbar-menu-button-containter">
-      <div class="navbar-menu-button">
-        <button class="menu-button"></button>
-      </div>
-      </div>
-      <div id="Upper-navbar-buttons-menu-container-override">
-      <div id="Upper-navbar-buttons-menu-container">
-      <div id="Upper-navbar-buttons-menu">
-        <div class="menu-images-container">
-        <a class="menu-images" href="./Images">Images</a>
-        </div>
-        <div class="menu-contact-container">
-          <a class="menu-contact" href="./Contact">Contact</a>
-        </div>
-        <div class="menu-register-container">
-          <a class="menu-register" href="./Register">Register</a>
-        </div>
-        <div class="menu-about-container">
-          <a class="menu-about" href="./About">About</a>
-        </div>
-        <div class="menu-schedule-container">
-          <a class="menu-schedule" href="./Schedule">Schedule</a>
-        </div>
-      </div>
-      </div>
-    </div>
-    </div>
-    </div>
-      <div class="footer"></div>  
+      <!-- add loading spinner screen when waiting for generation. 
+      add random ecrypt and decrypt
+      add printable button and feature
+      add "number of ciphers" button above input -->
+
+      <div class="footer">
+        <p class="footer-made-by">Created by John Guo</p>
+      </div>  
+      <script>
+        document.getElementById('left-screen-space').style.height = "100vh";
+        document.getElementById('right-screen-space').style.height = "100vh";
+        let mainHeight = document.getElementById('main-page').style.height;
+        document.getElementById('left-screen-space').style.height = mainHeight;
+        document.getElementById('right-screen-space').style.height = mainHeight;
+        const input = document.getElementById("cipher-amount-selector");
+        input.value = 1;
+        inputValue = parseFloat(input.value);
+        function generate() {
+          inputValue = parseFloat(input.value);
+          let newInputValue = input.value;
+          localStorage.setItem("input", newInputValue);
+          if (inputValue >= 1 && inputValue <= 5) {
+            window.open("./generated-ciphers.html", "_blank");
+          }
+      }
+      function increment() {
+        if (parseFloat(input.value) === 5) {
+        warningPopup();
+        return input.value = parseFloat(input.value);
+        }
+        else return input.value = (parseFloat(input.value) + 1);
+      }
+      function decrement() {
+        if (parseFloat(input.value) === 1) {
+        warningPopup();
+        return input.value = parseFloat(input.value);
+        }
+        else return input.value = (parseFloat(input.value) - 1);
+      }
+      function close_popup() {
+        document.getElementById("myPopup").classList.remove("show");
+      }
+      function warningPopup() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+      setTimeout(function () {
+        close_popup();}, 3000);
+      }
+      function checkValue() {
+        if (input.value >= 6 || input.value <= 0) {
+        warningPopup();
+        return input.value = 1;
+        }
+      }
+      </script>
+  </body>
+</html>
+  

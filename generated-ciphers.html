@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>Codebusters Generator | Printable</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Science Olympiad, Codebusters, Aristocrat Cipher">
+    <meta name="description" content="Generates Aristocrat ciphers for the Science Olympiad event, Codebusters.">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="generated-ciphers.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" href="images_folder/hoggard logo.png">
+  </head>
+  <body onload="printCiphers()">
+    <div class="Upper-navbar" id="upper-navbar-main">
+      <div class="Upper-navbar-logo-container">
+      <div class="Upper-navbar-logo">
+        <a class="Codebusters-Generator" href="./">
+        Codebusters Generator
+        </a>
+        <img class="hoggard-logo-upper-navbar" src="images_folder/hoggard logo.png">
+      </div>
+      </div>
+      </div>
+      <div class="body-container">
+      <div class="main-page-container">
+        <div class="left-screen-space" id="left-screen-space">
+        </div>
+        <div class="main-page" id="main-page">
+          <div class="print-button-container">
+            <button class="print-button" id="print-button">PRINT</button>
+          </div>
+          <ol class="cipher-list" id="cipher-list"></ol>
+        </div>
+        <div class="right-screen-space" id="right-screen-space"></div>
+      </div>
+    </div>
+      <div class="footer">
+        <p class="footer-made-by">Created by John Guo</p>
+      </div>
+      <script>
+        document.getElementById('left-screen-space').style.height = "100vh";
+        document.getElementById('right-screen-space').style.height = "100vh";
+
+        const letters = (() => {
+        const caps = [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
+        return caps.concat(caps.map(letter => letter.toLowerCase()));
+        })();
+
+        var encryptLetters = (() => {
+        var encryptCaps = [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
+        return encryptCaps
+        })();
+
+        console.log(encryptLetters.length);
+
+
+          var printableArray = [];
+          var upperPrintableArray = [];
+          console.log(letters);
+          const printButton = document.getElementById("print-button");
+          printButton.addEventListener("click", function() {
+            print();
+          })
+
+
+
+        function tableCreate() {
+          var body = document.getElementById("cipher-list");
+          var tbl = document.createElement('table');
+          tbl.style.width = '100%';
+          tbl.setAttribute('border', '1');
+          tbl.setAttribute('class', 'cipher-table');
+          var tbdy = document.createElement('tbody');
+          for (var i = 0; i < 1; i++) {
+            var tr = document.createElement('tr');
+            tr.setAttribute("id", "table-row1");
+            for (var j = 0; j < 27; j++) {
+              if (i == 0 && j == 0) {
+                var td = document.createElement('td');
+                td.appendChild(document.createTextNode('\u0020'))
+                td.setAttribute("id", "start-empty-cell");
+                td.setAttribute("border", "0");
+                tr.appendChild(td)
+              } else {
+                var td = document.createElement('td');
+                td.innerText = letters[j - 1];
+                i == 2 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
+                tr.appendChild(td)
+              }
+            }
+            tbdy.appendChild(tr);
+          }
+          for (var i = 0; i < 2; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 0; j < 27; j++) {
+              if (i == 0 && j == 0) {
+                var td = document.createElement('td');
+                td.innerText = "Frequency";
+                td.setAttribute("id", "frequency-cell");
+                tr.appendChild(td)
+              } 
+              else if (i == 1 && j == 0) {
+                var td = document.createElement('td');
+                td.innerText = "Replacement";
+                td.setAttribute("id", "replacement-cell");
+                tr.appendChild(td)
+              }
+              else {
+                var td = document.createElement('td');
+                td.appendChild(document.createTextNode('\u0020'))
+                i == 2 && j == 1 ? td.setAttribute('rowSpan', '2') : null;
+                tr.appendChild(td)
+              }
+            }
+            tbdy.appendChild(tr);
+          }
+          tbl.appendChild(tbdy);
+          body.appendChild(tbl);
+        }
+
+
+        function generateList () {
+          let list = document.getElementById("cipher-list");
+          for (i = 0; i < printableArray.length; ++i) {
+            let li = document.createElement('li');
+            li.innerText = printableArray[i];
+            list.appendChild(li);
+            tableCreate();
+          }
+          let mainHeight = document.getElementById('main-page').style.height;
+          document.getElementById('left-screen-space').style.height = mainHeight;
+          document.getElementById('right-screen-space').style.height = mainHeight;
+        }
+
+        function testPresent () {
+          if (upperPrintableArray[y].indexOf(letters[z]) === "false") {
+            z++;
+            testPresent();
+          }
+        }
+
+        function printCiphers() {
+          localStorage.getItem("input");
+          let i = 0;
+          const logFileText = async file => {
+            const response = await fetch(file);
+            const text = await response.text();
+            const quotesArray = Array.apply(null, text.split("\n"));
+            var randomElement = quotesArray[Math.floor(Math.random() * 40569)];
+            if (randomElement.length < 100 || randomElement.length > 125) {
+              logFileText("quotes.txt");
+              return "finished";
+            }
+            printableArray.push(randomElement);
+            i++;
+            if(i < localStorage.getItem("input")) {
+              logFileText("quotes.txt");
+              return "finished";
+            }
+            console.log(printableArray);
+            console.log(printableArray.length);
+
+            let upperPrintableArray = Array.apply(null, printableArray).map(item => item.toUpperCase());
+            console.log(printableArray);
+            console.log(upperPrintableArray);
+            for (var y = 0; y < localStorage.getItem("input"); y++) {
+              z = 0;
+              var encryptLetters = (() => {
+              var encryptCaps = [...Array(26)].map((val, i) => String.fromCharCode(i + 65));
+              return encryptCaps
+              })();
+              for (var z = 0; z < 26; z++) {
+                if (upperPrintableArray[y].includes(letters[z])) {
+                  var randomLetter = encryptLetters[Math.floor(Math.random() * (encryptLetters.length))];
+                  console.log(upperPrintableArray[y].indexOf(letters[z]) === "false");
+                  if (upperPrintableArray[y].indexOf(letters[z]) === "false") {
+                    z++;
+                    testPresent();
+                  }
+                  if (randomLetter === letters[z]) {
+                    randomLetter = encryptLetters[(encryptLetters.length - 1)];
+                  }
+                  if (randomLetter === letters[z]) {
+                    randomLetter = encryptLetters[(encryptLetters.length - encryptLetters.length)];
+                  }
+                  upperPrintableArray[y] = upperPrintableArray[y].replaceAll(letters[z], randomLetter.toLowerCase());
+                  encryptLetters.splice(encryptLetters.indexOf(randomLetter), 1) 
+                  
+                }
+                console.log(z);
+                console.log(encryptLetters.length);
+                console.log(randomLetter);
+                console.log(encryptLetters);
+                console.log(upperPrintableArray);
+              }
+            }
+            printableArray = Array.apply(null, upperPrintableArray).map(item => item.toUpperCase());
+            generateList();
+            console.log(printableArray);
+
+            // generateList();
+        }
+        logFileText("quotes.txt");
+
+      }
+      console.log(printableArray);
+      // function encrypt() {
+      //       let upperPrintableArray = printableArray.map(item => item.toUpperCase());
+      //       console.log(printableArray);
+      //       console.log(upperPrintableArray);
+      //       for (var y = 0; y < localStorage.getItem("input"); y++) {
+      //         for (var z = 0; z < 26; z++) {
+      //           if (upperPrintableArray[y].includes(letters[z])) {
+      //             var randomLetter = encryptLetters[Math.floor(Math.random() * (encryptLetters.length - 1 - z))];
+      //             if (randomLetter === letters[z]) {
+      //               randomLetter = encryptLetters[(encryptLetters.length - 1 - z)];
+      //             }
+      //             upperPrintableArray[y] = upperPrintableArray[y].replaceAll(letters[z], randomLetter.toLowerCase());
+      //           }
+      //         }
+      //         printableArray[y]
+      //       }
+      //     }
+
+      //     encrypt();
+      </script>
+  </body>
+</html>
+  
