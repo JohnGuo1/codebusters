@@ -157,9 +157,9 @@ div.solutions-button-container {
 
 ol.cipher-list {
     color: white;
-    font-size: 20px;
+    font-size: 23px;
     font-family: 'Courier Prime', monospace;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 150%;
     margin-left: 10px;
     -webkit-font-smoothing: antialiased;
@@ -179,6 +179,10 @@ tr {
 }
 
 td {
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 600;
     min-height: 35px;
     min-width: 20px;
     color: white;
@@ -200,7 +204,7 @@ table.cipher-table {
     color: white;
     font-size: 15px;
     font-family: 'Courier Prime', monospace;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #frequency-cell {
@@ -211,7 +215,7 @@ table.cipher-table {
     color: white;
     font-size: 18px;
     font-family: 'Courier Prime', monospace;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #replacement-cell {
@@ -222,7 +226,7 @@ table.cipher-table {
     color: white;
     font-size: 18px;
     font-family: 'Courier Prime', monospace;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 #solution-container0 {
