@@ -89,6 +89,8 @@ button.generate-button {
     background-color: rgb(14, 229, 79);
     border: 2px solid black;
     box-shadow: 0px 0px 20px black;
+    color: black;
+    text-align: center;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
@@ -124,7 +126,6 @@ div.cipher-amount-selector-container {
     justify-content: center;
     height: fit-content;
     margin-bottom: 65px;
-    box-shadow: 0px 0px 5px rgb(0, 0, 0);
 }
 
 div.input-decrease-button-container {
@@ -140,9 +141,12 @@ div.input-decrease-button-container {
 button.input-decrease-button {
     height: 100%;
     width: 100%;
+    color: black;
+    text-align: center;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
+    user-select: none;
     cursor: pointer;
 }
 
@@ -159,9 +163,12 @@ div.input-increase-button-container {
 button.input-increase-button {
     height: 100%;
     width: 100%;
+    color: black;
+    text-align: center;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+    user-select: none;
     cursor: pointer;
 }
 
@@ -177,6 +184,7 @@ div.instruction-section {
 
 p.instructions-text {
     padding-left: 20px;
+    padding-right: 10px;
     color: white;
     line-height: 50px;
     font-family: 'Roboto', sans-serif;
@@ -243,35 +251,30 @@ input::-webkit-inner-spin-button {
     margin: 0;
   }
 
-@media screen and (max-width: 1065px) {
-
-}
-
-@media screen and (max-width: 1000px) {
-
-}
-
-@media screen and (max-width: 900px) {
-
-}
-
-@media screen and (max-width: 800px) {
-
-}
-
 @media screen and (max-width: 750px) {
-
+    p.summary {
+        font-size: 23px;
+    }
 }
 
 @media screen and (max-width: 560px) {
+    p.summary {
+        font-size: 21px;
+    }
 
-}
+    p.input-guide{
+        font-size: 21px;
+        text-align: center;
+    }
 
-@media screen and (max-width: 480px) {
-
+    p.instructions-text {
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 420px) {
-
+    p.instructions-text {
+        font-size: 16px;
+    }
 }
 

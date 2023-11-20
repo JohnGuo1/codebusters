@@ -37,7 +37,7 @@ a.Codebusters-Generator {
     font-family: 'Roboto', sans-serif;
     font-weight: 600;
     text-decoration: none;
-    text-shadow: 3px 2px 15px rgb(0, 0, 0);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, .55);
     transition: opacity 100ms;
     user-select: none;
 }
